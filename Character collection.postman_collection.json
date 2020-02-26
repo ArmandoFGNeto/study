@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "2e3ec31e-8dec-4982-bca8-07444de65c22",
+		"name": "Character collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Fetch jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}jobs",
+							"host": [
+								"{{URL}}jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new job",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f4eeef2-11c4-45a0-8d71-7c258c205f21",
+								"exec": [
+									"pm.environment.set('jobId', pm.response.headers.get('X-job-params'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Chemistry\",\n\t\"level\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}jobs",
+							"host": [
+								"{{URL}}jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch job by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Basic dXNlcjpwYXNzd29yZA=="
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/javascript"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}jobs/{{jobId}}",
+							"host": [
+								"{{URL}}jobs"
+							],
+							"path": [
+								"{{jobId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Characters",
+			"item": [
+				{
+					"name": "Fetch characters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}characters",
+							"host": [
+								"{{URL}}characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new character",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f171c6f9-7346-43fe-a82e-54b4d96b4b0c",
+								"exec": [
+									"pm.environment.set('characterId', pm.response.headers.get('X-character-params'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Basic dXNlcjpwYXNzd29yZA=="
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Zalera\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}characters",
+							"host": [
+								"{{URL}}characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch character by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}characters/{{characterId}}",
+							"host": [
+								"{{URL}}characters"
+							],
+							"path": [
+								"{{characterId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CharactersJobs",
+			"item": [
+				{
+					"name": "Fetch all jobs from a character",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e8ce682f-c096-4552-abdf-72dc05a8af23",
+								"exec": [
+									"characterId = '340f980c-4828-4c50-a2b8-efc6f5e752d8';"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}characters/{{characterId}}/jobs",
+							"host": [
+								"{{URL}}characters"
+							],
+							"path": [
+								"{{characterId}}",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add job to character",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlcjpwYXNzd29yZA==",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}characters/{{characterId}}/jobs/{{jobId}}",
+							"host": [
+								"{{URL}}characters"
+							],
+							"path": [
+								"{{characterId}}",
+								"jobs",
+								"{{jobId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
