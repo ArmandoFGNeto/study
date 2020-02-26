@@ -43,7 +43,7 @@ public class CharacterControllerImpl implements CharacterController {
     public ResponseEntity<List<CharacterDto>> getAllCharacters(Pageable pageable) {
         Page<CharacterDto> page = myCharacterService.findAll(pageable).map(myCharacterMapper::toDto);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "api/v1/characters");
-        return new ResponseEntity<List<CharacterDto>>(page.getContent(), headers, HttpStatus.OK);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CharacterControllerImpl implements CharacterController {
         if (possibleCharacter.isPresent()) {
             return ResponseEntity.ok().body(myCharacterMapper.toDto(possibleCharacter.get()));
         }
-        throw new EntityNotFoundException();
+        throw new EntityNotFoundException("Character", "id", characterId.toString());
     }
 
     @Override

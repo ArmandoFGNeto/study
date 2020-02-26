@@ -7,6 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class JobServiceImpl implements JobService {
 
@@ -24,5 +27,10 @@ public class JobServiceImpl implements JobService {
     @Override
     public Page<Job> findAll(Pageable pageable) {
         return myJobRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Job> findById(UUID jobId) {
+        return myJobRepository.findById(jobId);
     }
 }
